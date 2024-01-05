@@ -27,15 +27,15 @@ After that, you can followint these steps:
 For Admin:
 - username: admin
 - password: admin
-- role: admin
+- role user: admin
 
 For Operator:
 - username: instructor
 - password: instructor
-- role: instruktur
+- role user: instruktur
 
 For Participant
 - username: member
 - password: member
-- role: member
+- role user: member
 
