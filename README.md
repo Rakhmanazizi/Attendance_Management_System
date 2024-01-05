@@ -1,7 +1,7 @@
 # ATTENDANCE MANAGEMENT SYSTEM
 
 Name   &emsp;: Muhammad Arif Rakhman Azizi <br>
-NIM    &emsp;&edsp;: 21106050042 <br>
+NIM    &emsp;&nbsp;: 21106050042 <br>
 Course &emsp;: Desktop and Embedded Platform Programming <br>
 
 ## Overview
