@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jan 2024 pada 07.33
+-- Waktu pembuatan: 05 Jan 2024 pada 08.24
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -52,7 +52,9 @@ INSERT INTO `event` (`id`, `nama_event`, `tanggal`, `tempat`, `instruktur`, `des
 (16, 'HELLO', '2024-01-24', 'HELLO', 33, 'HELLO'),
 (17, 'BANDUNG', '2024-01-11', 'BANDUNG', 37, 'BANDUNG JAWA BARAT'),
 (18, 'COBA COBA', '2024-01-17', 'COBA COBA COBA', 35, 'COBA COBA'),
-(19, 'BUKBER', '2024-01-25', 'SOROWAJAN', 43, 'BUKBER SANTAI');
+(19, 'BUKBER', '2024-01-25', 'SOROWAJAN', 43, 'BUKBER SANTAI'),
+(20, 'TRY IT', '2024-01-05', 'TRY IT', 52, 'TRY IT '),
+(21, 'TRY EVENT ', '2024-01-11', 'INDONESIA', 53, 'TRY EVENT DESCRIPTION');
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,9 @@ INSERT INTO `kehadiran` (`id`, `id_event`, `id_user`, `status`) VALUES
 (17, 14, 11, 'Telat'),
 (18, 6, 11, 'Hadir'),
 (19, 11, 11, 'Hadir'),
-(20, 17, 39, 'Hadir');
+(20, 17, 39, 'Hadir'),
+(21, 16, 50, 'Hadir'),
+(22, 21, 54, 'Hadir');
 
 -- --------------------------------------------------------
 
@@ -148,7 +152,10 @@ INSERT INTO `user` (`id`, `username`, `nama_lengkap`, `password`, `role`) VALUES
 (45, 'admin4', 'admin4', 'admin4', 'admin'),
 (48, 'arman', 'Arman Maulana', 'arman', 'member'),
 (49, 'RIAN', 'ARIANSYAH', 'RIAN', 'instruktur'),
-(50, 'amalun', 'ihlasul amal', 'amal', 'member');
+(50, 'amalun', 'ihlasul amal', 'amal', 'member'),
+(52, 'operator', 'operator', 'operator', 'instruktur'),
+(53, 'instructor', 'instructor', 'instructor', 'instruktur'),
+(54, 'member', 'member', 'member', 'member');
 
 -- --------------------------------------------------------
 
@@ -203,19 +210,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `kehadiran`
 --
 ALTER TABLE `kehadiran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
