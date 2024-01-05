@@ -14,7 +14,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 {
     public partial class data_presensi_uc : UserControl
     {
-        private string connectionDb = "server=localhost; user id=root; password=; database=db_attendance_ams";
+        private string connectionDb = "server=localhost; user id=root; password=; database=attendance_bc";
         public data_presensi_uc()
         {
             InitializeComponent();

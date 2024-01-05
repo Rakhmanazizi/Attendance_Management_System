@@ -35,8 +35,8 @@
             this.homeTitle = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.btn_logout = new System.Windows.Forms.Button();
-            this.welcomeTextInst = new System.Windows.Forms.Label();
             this.panelKonten = new System.Windows.Forms.Panel();
+            this.welcome_user = new System.Windows.Forms.Label();
             this.panelSidebar.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.SuspendLayout();
@@ -98,8 +98,8 @@
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.NavajoWhite;
+            this.panelHeader.Controls.Add(this.welcome_user);
             this.panelHeader.Controls.Add(this.btn_logout);
-            this.panelHeader.Controls.Add(this.welcomeTextInst);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(271, 0);
             this.panelHeader.Name = "panelHeader";
@@ -117,17 +117,6 @@
             this.btn_logout.UseVisualStyleBackColor = true;
             this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
-            // welcomeTextInst
-            // 
-            this.welcomeTextInst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeTextInst.ForeColor = System.Drawing.Color.DarkOrange;
-            this.welcomeTextInst.Location = new System.Drawing.Point(6, 24);
-            this.welcomeTextInst.Name = "welcomeTextInst";
-            this.welcomeTextInst.Size = new System.Drawing.Size(277, 45);
-            this.welcomeTextInst.TabIndex = 0;
-            this.welcomeTextInst.Text = "label1";
-            this.welcomeTextInst.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panelKonten
             // 
             this.panelKonten.BackColor = System.Drawing.Color.Bisque;
@@ -136,6 +125,17 @@
             this.panelKonten.Name = "panelKonten";
             this.panelKonten.Size = new System.Drawing.Size(529, 359);
             this.panelKonten.TabIndex = 2;
+            // 
+            // welcome_user
+            // 
+            this.welcome_user.AutoSize = true;
+            this.welcome_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcome_user.ForeColor = System.Drawing.Color.DarkOrange;
+            this.welcome_user.Location = new System.Drawing.Point(49, 36);
+            this.welcome_user.Name = "welcome_user";
+            this.welcome_user.Size = new System.Drawing.Size(53, 21);
+            this.welcome_user.TabIndex = 2;
+            this.welcome_user.Text = "label1";
             // 
             // instructor_page
             // 
@@ -151,6 +151,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelSidebar.ResumeLayout(false);
             this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -161,10 +162,10 @@
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Panel panelKonten;
         private System.Windows.Forms.Label homeTitle;
-        private System.Windows.Forms.Label welcomeTextInst;
         private System.Windows.Forms.Button btn_logout;
         private System.Windows.Forms.Button btn_presensi;
         private System.Windows.Forms.Button btn_event;
         private System.Windows.Forms.Button btn_beranda;
+        private System.Windows.Forms.Label welcome_user;
     }
 }

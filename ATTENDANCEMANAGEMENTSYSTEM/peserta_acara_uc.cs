@@ -14,7 +14,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 {
     public partial class peserta_acara_uc : UserControl
     {
-        private string connectionDb = "server=localhost; user id=root; password=; database=db_attendance_ams";
+        private string connectionDb = "server=localhost; user id=root; password=; database=attendance_bc";
         public peserta_acara_uc()
         {
             InitializeComponent();
@@ -78,14 +78,16 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         private void btn_tambah_Click(object sender, EventArgs e)
         {
-            if (comboBoxEvent.Text == "" || comboBoxUser.Text == "")
-            {
-                MessageBox.Show("Silakan isi kolom terlebih dahulu!", "Gagal Tambah Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            } else
+            if (comboBoxEvent.SelectedIndex != -1 || comboBoxUser.SelectedIndex != -1)
             {
                 // Mendapatkan ID event dan ID user dari selected item ComboBox
-                string id_event = comboBoxEvent.SelectedItem.ToString().Split(' ')[0];
-                string id_user = comboBoxUser.SelectedItem.ToString().Split(' ')[0];
+                string id_event = comboBoxEvent.SelectedItem.ToString();
+                string[] get_id_event = id_event.Split(' ');
+                id_event = get_id_event[0];
+
+                string id_user = comboBoxUser.SelectedItem.ToString();
+                string[] split_id_user = id_user.Split(' ');
+                id_user = split_id_user[0];
 
                 // Mengecek apakah user sudah terdaftar untuk event tertentu
                 if (!cek_user_terdaftar_acara(id_event, id_user))
@@ -108,11 +110,15 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
                         }
                     }
                     btn_load_Click(sender, e);
+                    btn_clear_Click(sender, e);
                 }
                 else
                 {
                     MessageBox.Show("Peserta sudah terdaftar dalam acara ini.", "Gagal Tambah Event", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            } else
+            {
+                MessageBox.Show("Silakan isi kolom terlebih dahulu!", "Gagal Tambah Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -182,8 +188,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             {
                 // ambil data dari baris yang diklik
                 int id = e.RowIndex;
-
-                string id_peserta = dgv_peserta_acara.Rows[id].Cells[1].Value.ToString();
+                string id_peserta = dgv_peserta_acara.Rows[id].Cells[1].Value?.ToString();
 
                 if (e.ColumnIndex == dgv_peserta_acara.Columns["col_delete"].Index)
                 {
@@ -219,6 +224,12 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
                 }
             }
             btn_load_Click(this, EventArgs.Empty);
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            comboBoxEvent.Text = string.Empty;
+            comboBoxUser.Text = string.Empty;
         }
     }
 }

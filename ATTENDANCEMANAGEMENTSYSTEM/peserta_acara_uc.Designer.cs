@@ -31,6 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtBoxIdPeserta = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,7 +42,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgv_peserta_acara = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.txtBoxIdPeserta = new System.Windows.Forms.TextBox();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -76,6 +77,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_clear);
             this.panel1.Controls.Add(this.txtBoxIdPeserta);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btn_load);
@@ -85,6 +87,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1121, 660);
             this.panel1.TabIndex = 1;
+            // 
+            // txtBoxIdPeserta
+            // 
+            this.txtBoxIdPeserta.Location = new System.Drawing.Point(559, 152);
+            this.txtBoxIdPeserta.Name = "txtBoxIdPeserta";
+            this.txtBoxIdPeserta.Size = new System.Drawing.Size(150, 22);
+            this.txtBoxIdPeserta.TabIndex = 9;
+            this.txtBoxIdPeserta.Visible = false;
             // 
             // groupBox1
             // 
@@ -182,13 +192,15 @@
             this.dgv_peserta_acara.TabIndex = 0;
             this.dgv_peserta_acara.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_peserta_acara_CellContentClick);
             // 
-            // txtBoxIdPeserta
+            // btn_clear
             // 
-            this.txtBoxIdPeserta.Location = new System.Drawing.Point(559, 152);
-            this.txtBoxIdPeserta.Name = "txtBoxIdPeserta";
-            this.txtBoxIdPeserta.Size = new System.Drawing.Size(150, 22);
-            this.txtBoxIdPeserta.TabIndex = 9;
-            this.txtBoxIdPeserta.Visible = false;
+            this.btn_clear.Location = new System.Drawing.Point(559, 15);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(130, 47);
+            this.btn_clear.TabIndex = 6;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // peserta_acara_uc
             // 
@@ -227,5 +239,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox txtBoxIdPeserta;
+        private System.Windows.Forms.Button btn_clear;
     }
 }

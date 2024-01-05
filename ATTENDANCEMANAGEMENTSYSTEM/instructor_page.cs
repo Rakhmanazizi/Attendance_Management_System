@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,11 +16,12 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
         private beranda_instruktur_uc beranda;
         private data_event_instruktur_uc data_event;
         private data_presensi_instruktur_uc data_presensi;
+        private string username = UserSession.Username;
 
         public instructor_page()
         {
             InitializeComponent();
-            welcomeTextInst.Text = "Selamat datang, " + UserSession.Username;
+            welcome_user.Text = "Selamat datang, " + username;
 
             // buat inisisalisasai
             beranda = new beranda_instruktur_uc();

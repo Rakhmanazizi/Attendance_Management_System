@@ -14,12 +14,13 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 {
     public partial class data_event_instruktur_uc : UserControl
     {
-        private string username = UserSession.Username;
+        private string username_instruktur = UserSession.Username;
 
         public data_event_instruktur_uc()
         {
             InitializeComponent();
             dgvEventInst.DataSource = fill_data();
+            
 
             DataGridViewButtonColumn col_edit = new DataGridViewButtonColumn();
             col_edit.UseColumnTextForButtonValue = true;
@@ -34,38 +35,39 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             dgvEventInst.Columns.Add(col_delete);
         }
 
-        private int getUserId()
+        private int get_id_instruktur()
         {
-            int userId = 0;
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            int id_instruktur = 0;
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             string query = $"SELECT id FROM user WHERE username=@username";
             using (MySqlConnection conn = new MySqlConnection(connection))
             {
                 conn.Open();
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@username", username_instruktur);
 
                     object result = command.ExecuteScalar();
                     if (result != null)
                     {
-                        userId = Convert.ToInt32(result);
+                        id_instruktur = Convert.ToInt32(result);
                     }
                 }
             }
-                return userId;
+            return id_instruktur;
         }
 
-       //private void button1_Click(object sender, EventArgs e)
+        //private void button1_Click(object sender, EventArgs e)
 
         private DataTable fill_data()
         {
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             string query = $"SELECT * FROM event_view WHERE instruktur=@username";
 
+            int get_id = get_id_instruktur();
             MySqlConnection conn = new MySqlConnection(connection);
             MySqlCommand command = new MySqlCommand(query, conn);
-            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@username", get_id);
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
             DataTable dataTable = new DataTable();
 
@@ -88,7 +90,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         private void btn_tambah_Click(object sender, EventArgs e)
         {
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             string query = "INSERT INTO event VALUES('', @nama_event, @tanggal, @tempat, @instruktur, @deskripsi)";
 
             using (MySqlConnection conn = new MySqlConnection(connection))
@@ -98,7 +100,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
                 {
 
                     DateTime date = dtp_tanggal.Value;
-                    int id_instruktur = getUserId();
+                    int id_instruktur = get_id_instruktur();
 
                     command.Parameters.AddWithValue("@nama_event", this.textBoxEvent.Text);
                     command.Parameters.AddWithValue("@tanggal", date.ToString("yyyy-MM-dd"));
@@ -134,7 +136,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             string query = "UPDATE event SET nama_event=@nama_event, tempat=@tempat, tanggal=@tanggal, deskripsi=@deskripsi WHERE id=@id";
             MySqlConnection conn = new MySqlConnection(connection);
             conn.Open();
@@ -167,7 +169,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             DialogResult result = MessageBox.Show(pesan, judul, buttons, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+                string connection = "server=localhost; user id=root; password=; database=attendance_bc";
                 string query = "DELETE FROM event WHERE id=@id";
                 MySqlConnection conn = new MySqlConnection(connection);
                 conn.Open();

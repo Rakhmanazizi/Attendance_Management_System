@@ -15,7 +15,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 {
     public partial class data_presensi_instruktur_uc : UserControl
     {
-        private string connectionDb = "server=localhost; user id=root; password=; database=db_attendance_ams";
+        private string connectionDb = "server=localhost; user id=root; password=; database=attendance_bc";
         private string username_instruktur = UserSession.Username;
         public data_presensi_instruktur_uc()
         {
@@ -32,7 +32,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
        private int get_id_instruktur()
         {
             int id_instruktur = 0;
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             string query = $"SELECT id FROM user WHERE username=@username";
             using (MySqlConnection conn = new MySqlConnection(connection))
             {

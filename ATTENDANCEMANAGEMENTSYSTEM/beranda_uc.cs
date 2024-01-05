@@ -15,7 +15,6 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
         public beranda_uc()
         {
             InitializeComponent();
-            
         }
     }
 }

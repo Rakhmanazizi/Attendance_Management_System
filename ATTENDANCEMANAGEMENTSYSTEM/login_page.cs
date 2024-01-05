@@ -20,13 +20,12 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             InitializeComponent();
             textBoxPassword.UseSystemPasswordChar = true;
             this.checkBoxTampilPass.CheckedChanged += new System.EventHandler(this.checkBoxTampilPass_CheckedChanged);
-
         }
 
         private void btn_login_Click(object sender, EventArgs e)
         {
             // membuat variabel koneksi untuk megambil data MySql
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             // membuat query SELECT
             string query = "SELECT * FROM user WHERE username=@username AND password=@password AND role=@role";
             // membuat koneksi dengan MySql
@@ -86,7 +85,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Gagal tersambung dengan Database. Periksa kembali jika ada kesalahan", "Gagal Koneksi Database", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(ex.Message);
                 }
                 finally
                 {

@@ -36,7 +36,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         public DataTable fill_data()
         {
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             string query = "SELECT * FROM event_view";
 
             MySqlConnection conn = new MySqlConnection(connection);
@@ -63,7 +63,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         public void fill_combo_box()
         {
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             string query = "SELECT id, nama_lengkap FROM user WHERE role=\"instruktur\"";
 
             using (MySqlConnection conn = new MySqlConnection(connection))
@@ -88,7 +88,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         public void display_combo_box()
         {
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             string query = "SELECT id, nama_lengkap FROM user WHERE role=\"instruktur\"";
             MySqlConnection conn = new MySqlConnection(connection);
             conn.Open();
@@ -97,7 +97,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         private void btn_tambah_Click(object sender, EventArgs e)
         {
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             string query = "INSERT INTO event VALUES('', @nama_event, @tanggal, @tempat, @instruktur, @deskripsi)";
 
             DateTime date = dateTimePicker1.Value;
@@ -209,7 +209,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             DialogResult result = MessageBox.Show(pesan, judul, buttons, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+                string connection = "server=localhost; user id=root; password=; database=attendance_bc";
                 string query = "DELETE FROM event WHERE id=@id";
                 MySqlConnection conn = new MySqlConnection(connection);
                 conn.Open();
@@ -228,7 +228,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
+            string connection = "server=localhost; user id=root; password=; database=attendance_bc";
             string query = "UPDATE event SET nama_event=@nama_event, tempat=@tempat, tanggal=@tanggal, deskripsi=@deskripsi WHERE id=@id";
             MySqlConnection conn = new MySqlConnection(connection);
             conn.Open();
