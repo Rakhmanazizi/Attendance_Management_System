@@ -26,6 +26,8 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             col_delete.Text = "Hapus";
             col_delete.Name = "col_delete";
             dgv_peserta_acara.Columns.Add(col_delete);
+
+            btn_load_Click(this, EventArgs.Empty);
         }
 
         public void fill_cb_user()
@@ -210,19 +212,34 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             if (result == DialogResult.Yes)
             {
                 // Lakukan aksi penghapusan
-                string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
-                string query = "DELETE FROM kehadiran WHERE id=@id";
+                string connection = "server=localhost; user id=root; password=; database=attendance_bc";
+                string query = "DELETE FROM kehadiran WHERE id=@id"; 
                 MySqlConnection conn = new MySqlConnection(connection);
-                conn.Open();
-                MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("id", this.txtBoxIdPeserta.Text);
-                int rowAffected = command.ExecuteNonQuery();
-                if (rowAffected > 0)
+
+                try
                 {
-                    MessageBoxButtons tombol = MessageBoxButtons.OK;
-                    MessageBox.Show("Suskes hapus data", "Hapus Data", tombol, MessageBoxIcon.Information);
+                    conn.Open();
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    command.Parameters.AddWithValue("id", Convert.ToInt32( this.txtBoxIdPeserta.Text));
+                    int rowAffected = command.ExecuteNonQuery();
+
+                    if (rowAffected > 0)
+                    {
+                        MessageBoxButtons tombol = MessageBoxButtons.OK;
+                        MessageBox.Show("Sukses hapus data", "Hapus Data", tombol, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle exceptions if needed
+                    MessageBox.Show("Error deleting data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
                 }
             }
+
             btn_load_Click(this, EventArgs.Empty);
         }
 

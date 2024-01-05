@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using NuGet.Protocol.Plugins;
 using Org.BouncyCastle.Asn1.Mozilla;
 using System;
 using System.Collections.Generic;
@@ -203,27 +204,43 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         public void col_delete_Click()
         {
-            string pesan = "Apakah anda yakin ingin menghapus data ini?";
-            string judul = "Hapus Event";
+            string pesan = $"Anda yakin ingin menghapus data?";
+            string judul = "Delete Data";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(pesan, judul, buttons, MessageBoxIcon.Question);
+
             if (result == DialogResult.Yes)
             {
+                // Lakukan aksi penghapusan
                 string connection = "server=localhost; user id=root; password=; database=attendance_bc";
-                string query = "DELETE FROM event WHERE id=@id";
+                string query = "DELETE FROM event WHERE id=@id"; // Corrected query
                 MySqlConnection conn = new MySqlConnection(connection);
-                conn.Open();
-                MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@id", this.textBoxIdEditEvent.Text);
 
-                int rowAffected = command.ExecuteNonQuery();
-                if (rowAffected > 0)
+                try
                 {
-                    MessageBoxButtons tombol = MessageBoxButtons.OK;
-                    MessageBox.Show("Berhasil menghapus data", "Sukses Hapus", tombol, MessageBoxIcon.Information);
+                    conn.Open();
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    command.Parameters.AddWithValue("id", this.textBoxIdEditEvent.Text);
+                    int rowAffected = command.ExecuteNonQuery();
+
+                    if (rowAffected > 0)
+                    {
+                        MessageBoxButtons tombol = MessageBoxButtons.OK;
+                        MessageBox.Show("Sukses hapus data", "Hapus Data", tombol, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle exceptions if needed
+                    MessageBox.Show("Error deleting data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
                 }
             }
 
+            btn_load_Click(this, EventArgs.Empty);
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
