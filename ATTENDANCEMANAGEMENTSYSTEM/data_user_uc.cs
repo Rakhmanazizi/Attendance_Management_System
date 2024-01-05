@@ -198,7 +198,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
                 MySqlConnection conn = new MySqlConnection(connection);
                 conn.Open();
                 MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("id", this.txtBxIdUs.Text);
+                command.Parameters.AddWithValue("@id", this.txtBxIdUs.Text);
                 int rowAffected = command.ExecuteNonQuery();
                 if (rowAffected > 0)
                 {
