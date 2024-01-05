@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panelSidebar = new System.Windows.Forms.Panel();
+            this.btn_presensi = new System.Windows.Forms.Button();
+            this.btn_event = new System.Windows.Forms.Button();
+            this.btn_beranda = new System.Windows.Forms.Button();
             this.homeTitle = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.btn_logout = new System.Windows.Forms.Button();
             this.welcomeTextInst = new System.Windows.Forms.Label();
             this.panelKonten = new System.Windows.Forms.Panel();
-            this.btn_beranda = new System.Windows.Forms.Button();
-            this.btn_event = new System.Windows.Forms.Button();
-            this.btn_presensi = new System.Windows.Forms.Button();
             this.panelSidebar.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +53,36 @@
             this.panelSidebar.Name = "panelSidebar";
             this.panelSidebar.Size = new System.Drawing.Size(271, 450);
             this.panelSidebar.TabIndex = 0;
+            // 
+            // btn_presensi
+            // 
+            this.btn_presensi.Location = new System.Drawing.Point(32, 229);
+            this.btn_presensi.Name = "btn_presensi";
+            this.btn_presensi.Size = new System.Drawing.Size(193, 56);
+            this.btn_presensi.TabIndex = 11;
+            this.btn_presensi.Text = "Rekap Kehadiran";
+            this.btn_presensi.UseVisualStyleBackColor = true;
+            this.btn_presensi.Click += new System.EventHandler(this.btn_presensi_Click);
+            // 
+            // btn_event
+            // 
+            this.btn_event.Location = new System.Drawing.Point(32, 167);
+            this.btn_event.Name = "btn_event";
+            this.btn_event.Size = new System.Drawing.Size(193, 56);
+            this.btn_event.TabIndex = 10;
+            this.btn_event.Text = "Data Event";
+            this.btn_event.UseVisualStyleBackColor = true;
+            this.btn_event.Click += new System.EventHandler(this.btn_event_Click);
+            // 
+            // btn_beranda
+            // 
+            this.btn_beranda.Location = new System.Drawing.Point(32, 105);
+            this.btn_beranda.Name = "btn_beranda";
+            this.btn_beranda.Size = new System.Drawing.Size(193, 56);
+            this.btn_beranda.TabIndex = 9;
+            this.btn_beranda.Text = "Beranda";
+            this.btn_beranda.UseVisualStyleBackColor = true;
+            this.btn_beranda.Click += new System.EventHandler(this.btn_beranda_Click);
             // 
             // homeTitle
             // 
@@ -106,36 +136,6 @@
             this.panelKonten.Name = "panelKonten";
             this.panelKonten.Size = new System.Drawing.Size(529, 359);
             this.panelKonten.TabIndex = 2;
-            // 
-            // btn_beranda
-            // 
-            this.btn_beranda.Location = new System.Drawing.Point(32, 105);
-            this.btn_beranda.Name = "btn_beranda";
-            this.btn_beranda.Size = new System.Drawing.Size(193, 56);
-            this.btn_beranda.TabIndex = 9;
-            this.btn_beranda.Text = "Beranda";
-            this.btn_beranda.UseVisualStyleBackColor = true;
-            this.btn_beranda.Click += new System.EventHandler(this.btn_beranda_Click);
-            // 
-            // btn_event
-            // 
-            this.btn_event.Location = new System.Drawing.Point(32, 167);
-            this.btn_event.Name = "btn_event";
-            this.btn_event.Size = new System.Drawing.Size(193, 56);
-            this.btn_event.TabIndex = 10;
-            this.btn_event.Text = "Data Event";
-            this.btn_event.UseVisualStyleBackColor = true;
-            this.btn_event.Click += new System.EventHandler(this.btn_event_Click);
-            // 
-            // btn_presensi
-            // 
-            this.btn_presensi.Location = new System.Drawing.Point(32, 229);
-            this.btn_presensi.Name = "btn_presensi";
-            this.btn_presensi.Size = new System.Drawing.Size(193, 56);
-            this.btn_presensi.TabIndex = 11;
-            this.btn_presensi.Text = "Rekap Kehadiran";
-            this.btn_presensi.UseVisualStyleBackColor = true;
-            this.btn_presensi.Click += new System.EventHandler(this.btn_presensi_Click);
             // 
             // instructor_page
             // 

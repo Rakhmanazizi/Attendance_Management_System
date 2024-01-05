@@ -145,6 +145,12 @@
     <Compile Include="beranda_instruktur_uc.Designer.cs">
       <DependentUpon>beranda_instruktur_uc.cs</DependentUpon>
     </Compile>
+    <Compile Include="beranda_member.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="beranda_member.Designer.cs">
+      <DependentUpon>beranda_member.cs</DependentUpon>
+    </Compile>
     <Compile Include="beranda_uc.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -193,6 +199,12 @@
     <Compile Include="data_user_uc.Designer.cs">
       <DependentUpon>data_user_uc.cs</DependentUpon>
     </Compile>
+    <Compile Include="history_member.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="history_member.Designer.cs">
+      <DependentUpon>history_member.cs</DependentUpon>
+    </Compile>
     <Compile Include="instructor_page.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +238,9 @@
     <EmbeddedResource Include="beranda_instruktur_uc.resx">
       <DependentUpon>beranda_instruktur_uc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="beranda_member.resx">
+      <DependentUpon>beranda_member.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="beranda_uc.resx">
       <DependentUpon>beranda_uc.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,8 +259,14 @@
     <EmbeddedResource Include="data_presensi_instruktur_uc.resx">
       <DependentUpon>data_presensi_instruktur_uc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="data_presensi_uc.resx">
+      <DependentUpon>data_presensi_uc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="data_user_uc.resx">
       <DependentUpon>data_user_uc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="history_member.resx">
+      <DependentUpon>history_member.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="instructor_page.resx">
       <DependentUpon>instructor_page.cs</DependentUpon>

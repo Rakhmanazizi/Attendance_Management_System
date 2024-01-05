@@ -29,18 +29,22 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxUser = new System.Windows.Forms.ComboBox();
-            this.comboBoxEvent = new System.Windows.Forms.ComboBox();
             this.btn_tambah = new System.Windows.Forms.Button();
+            this.comboBoxEvent = new System.Windows.Forms.ComboBox();
+            this.btn_load = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgv_peserta_acara = new System.Windows.Forms.DataGridView();
-            this.btn_load = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.txtBoxIdPeserta = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_peserta_acara)).BeginInit();
             this.SuspendLayout();
@@ -58,21 +62,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1121, 100);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btn_load);
-            this.panel1.Controls.Add(this.tableLayoutPanel2);
-            this.panel1.Controls.Add(this.btn_tambah);
-            this.panel1.Controls.Add(this.comboBoxEvent);
-            this.panel1.Controls.Add(this.comboBoxUser);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 100);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1121, 660);
-            this.panel1.TabIndex = 1;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -85,49 +74,85 @@
             this.label1.Text = "TAMBAH DATA PESERTA ACARA";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtBoxIdPeserta);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.btn_load);
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 100);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1121, 660);
+            this.panel1.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.comboBoxUser);
+            this.groupBox1.Controls.Add(this.btn_tambah);
+            this.groupBox1.Controls.Add(this.comboBoxEvent);
+            this.groupBox1.Location = new System.Drawing.Point(79, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(400, 171);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tambah Data";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 30);
+            this.label2.Location = new System.Drawing.Point(19, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 16);
+            this.label2.Size = new System.Drawing.Size(100, 16);
             this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
+            this.label2.Text = "Nama Lengkap";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(76, 70);
+            this.label3.Location = new System.Drawing.Point(19, 67);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 16);
+            this.label3.Size = new System.Drawing.Size(83, 16);
             this.label3.TabIndex = 1;
-            this.label3.Text = "label3";
+            this.label3.Text = "Nama Acara";
             // 
             // comboBoxUser
             // 
             this.comboBoxUser.FormattingEnabled = true;
-            this.comboBoxUser.Location = new System.Drawing.Point(194, 21);
+            this.comboBoxUser.Location = new System.Drawing.Point(137, 18);
             this.comboBoxUser.Name = "comboBoxUser";
             this.comboBoxUser.Size = new System.Drawing.Size(240, 24);
             this.comboBoxUser.TabIndex = 3;
             // 
-            // comboBoxEvent
-            // 
-            this.comboBoxEvent.FormattingEnabled = true;
-            this.comboBoxEvent.Location = new System.Drawing.Point(194, 62);
-            this.comboBoxEvent.Name = "comboBoxEvent";
-            this.comboBoxEvent.Size = new System.Drawing.Size(240, 24);
-            this.comboBoxEvent.TabIndex = 4;
-            // 
             // btn_tambah
             // 
-            this.btn_tambah.Location = new System.Drawing.Point(303, 114);
+            this.btn_tambah.Location = new System.Drawing.Point(246, 111);
             this.btn_tambah.Name = "btn_tambah";
             this.btn_tambah.Size = new System.Drawing.Size(130, 47);
             this.btn_tambah.TabIndex = 5;
             this.btn_tambah.Text = "Tambah";
             this.btn_tambah.UseVisualStyleBackColor = true;
             this.btn_tambah.Click += new System.EventHandler(this.btn_tambah_Click);
+            // 
+            // comboBoxEvent
+            // 
+            this.comboBoxEvent.FormattingEnabled = true;
+            this.comboBoxEvent.Location = new System.Drawing.Point(137, 59);
+            this.comboBoxEvent.Name = "comboBoxEvent";
+            this.comboBoxEvent.Size = new System.Drawing.Size(240, 24);
+            this.comboBoxEvent.TabIndex = 4;
+            // 
+            // btn_load
+            // 
+            this.btn_load.Location = new System.Drawing.Point(82, 208);
+            this.btn_load.Name = "btn_load";
+            this.btn_load.Size = new System.Drawing.Size(130, 47);
+            this.btn_load.TabIndex = 7;
+            this.btn_load.Text = "Load";
+            this.btn_load.UseVisualStyleBackColor = true;
+            this.btn_load.Click += new System.EventHandler(this.btn_load_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -155,16 +180,15 @@
             this.dgv_peserta_acara.RowTemplate.Height = 24;
             this.dgv_peserta_acara.Size = new System.Drawing.Size(975, 349);
             this.dgv_peserta_acara.TabIndex = 0;
+            this.dgv_peserta_acara.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_peserta_acara_CellContentClick);
             // 
-            // btn_load
+            // txtBoxIdPeserta
             // 
-            this.btn_load.Location = new System.Drawing.Point(82, 208);
-            this.btn_load.Name = "btn_load";
-            this.btn_load.Size = new System.Drawing.Size(130, 47);
-            this.btn_load.TabIndex = 7;
-            this.btn_load.Text = "Load";
-            this.btn_load.UseVisualStyleBackColor = true;
-            this.btn_load.Click += new System.EventHandler(this.btn_load_Click);
+            this.txtBoxIdPeserta.Location = new System.Drawing.Point(559, 152);
+            this.txtBoxIdPeserta.Name = "txtBoxIdPeserta";
+            this.txtBoxIdPeserta.Size = new System.Drawing.Size(150, 22);
+            this.txtBoxIdPeserta.TabIndex = 9;
+            this.txtBoxIdPeserta.Visible = false;
             // 
             // peserta_acara_uc
             // 
@@ -179,6 +203,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_peserta_acara)).EndInit();
             this.ResumeLayout(false);
@@ -198,5 +224,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.DataGridView dgv_peserta_acara;
         private System.Windows.Forms.Button btn_load;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.TextBox txtBoxIdPeserta;
     }
 }

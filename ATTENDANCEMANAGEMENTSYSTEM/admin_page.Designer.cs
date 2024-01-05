@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelSidebar = new System.Windows.Forms.Panel();
+            this.btn_peserta_acara = new System.Windows.Forms.Button();
             this.homeTitle = new System.Windows.Forms.Label();
             this.btn_hadir = new System.Windows.Forms.Button();
             this.btn_event = new System.Windows.Forms.Button();
@@ -40,28 +41,41 @@
             this.welcomeTxt = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panelKonten = new System.Windows.Forms.Panel();
-            this.btn_peserta_acara = new System.Windows.Forms.Button();
+            this.management_account = new System.Windows.Forms.GroupBox();
+            this.management_event = new System.Windows.Forms.GroupBox();
+            this.attendance_recording = new System.Windows.Forms.GroupBox();
             this.panelSidebar.SuspendLayout();
             this.panelHeader.SuspendLayout();
+            this.management_account.SuspendLayout();
+            this.management_event.SuspendLayout();
+            this.attendance_recording.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSidebar
             // 
             this.panelSidebar.BackColor = System.Drawing.Color.PapayaWhip;
-            this.panelSidebar.Controls.Add(this.btn_peserta_acara);
+            this.panelSidebar.Controls.Add(this.attendance_recording);
+            this.panelSidebar.Controls.Add(this.management_event);
+            this.panelSidebar.Controls.Add(this.management_account);
             this.panelSidebar.Controls.Add(this.homeTitle);
-            this.panelSidebar.Controls.Add(this.btn_hadir);
-            this.panelSidebar.Controls.Add(this.btn_event);
-            this.panelSidebar.Controls.Add(this.btn_admin);
-            this.panelSidebar.Controls.Add(this.btn_instructor);
-            this.panelSidebar.Controls.Add(this.btn_member);
             this.panelSidebar.Controls.Add(this.btn_beranda);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.ForeColor = System.Drawing.Color.DarkOrange;
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(271, 450);
+            this.panelSidebar.Size = new System.Drawing.Size(271, 722);
             this.panelSidebar.TabIndex = 0;
+            // 
+            // btn_peserta_acara
+            // 
+            this.btn_peserta_acara.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_peserta_acara.Location = new System.Drawing.Point(16, 87);
+            this.btn_peserta_acara.Name = "btn_peserta_acara";
+            this.btn_peserta_acara.Size = new System.Drawing.Size(212, 42);
+            this.btn_peserta_acara.TabIndex = 7;
+            this.btn_peserta_acara.Text = "Peserta Event";
+            this.btn_peserta_acara.UseVisualStyleBackColor = true;
+            this.btn_peserta_acara.Click += new System.EventHandler(this.btn_peserta_acara_Click);
             // 
             // homeTitle
             // 
@@ -76,7 +90,7 @@
             // btn_hadir
             // 
             this.btn_hadir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_hadir.Location = new System.Drawing.Point(28, 379);
+            this.btn_hadir.Location = new System.Drawing.Point(16, 28);
             this.btn_hadir.Name = "btn_hadir";
             this.btn_hadir.Size = new System.Drawing.Size(212, 42);
             this.btn_hadir.TabIndex = 5;
@@ -87,7 +101,7 @@
             // btn_event
             // 
             this.btn_event.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_event.Location = new System.Drawing.Point(28, 283);
+            this.btn_event.Location = new System.Drawing.Point(16, 39);
             this.btn_event.Name = "btn_event";
             this.btn_event.Size = new System.Drawing.Size(212, 42);
             this.btn_event.TabIndex = 4;
@@ -98,7 +112,7 @@
             // btn_admin
             // 
             this.btn_admin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_admin.Location = new System.Drawing.Point(28, 235);
+            this.btn_admin.Location = new System.Drawing.Point(16, 136);
             this.btn_admin.Name = "btn_admin";
             this.btn_admin.Size = new System.Drawing.Size(212, 42);
             this.btn_admin.TabIndex = 3;
@@ -109,7 +123,7 @@
             // btn_instructor
             // 
             this.btn_instructor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_instructor.Location = new System.Drawing.Point(28, 187);
+            this.btn_instructor.Location = new System.Drawing.Point(16, 88);
             this.btn_instructor.Name = "btn_instructor";
             this.btn_instructor.Size = new System.Drawing.Size(212, 42);
             this.btn_instructor.TabIndex = 2;
@@ -120,7 +134,7 @@
             // btn_member
             // 
             this.btn_member.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_member.Location = new System.Drawing.Point(28, 139);
+            this.btn_member.Location = new System.Drawing.Point(16, 40);
             this.btn_member.Name = "btn_member";
             this.btn_member.Size = new System.Drawing.Size(212, 42);
             this.btn_member.TabIndex = 1;
@@ -147,7 +161,7 @@
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(271, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(529, 91);
+            this.panelHeader.Size = new System.Drawing.Size(916, 91);
             this.panelHeader.TabIndex = 1;
             // 
             // welcomeTxt
@@ -164,7 +178,7 @@
             // btnLogout
             // 
             this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogout.Location = new System.Drawing.Point(412, 25);
+            this.btnLogout.Location = new System.Drawing.Point(799, 25);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(105, 45);
             this.btnLogout.TabIndex = 0;
@@ -177,25 +191,50 @@
             this.panelKonten.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelKonten.Location = new System.Drawing.Point(271, 91);
             this.panelKonten.Name = "panelKonten";
-            this.panelKonten.Size = new System.Drawing.Size(529, 359);
+            this.panelKonten.Size = new System.Drawing.Size(916, 631);
             this.panelKonten.TabIndex = 2;
             // 
-            // btn_peserta_acara
+            // management_account
             // 
-            this.btn_peserta_acara.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_peserta_acara.Location = new System.Drawing.Point(28, 331);
-            this.btn_peserta_acara.Name = "btn_peserta_acara";
-            this.btn_peserta_acara.Size = new System.Drawing.Size(212, 42);
-            this.btn_peserta_acara.TabIndex = 7;
-            this.btn_peserta_acara.Text = "Peserta Event";
-            this.btn_peserta_acara.UseVisualStyleBackColor = true;
-            this.btn_peserta_acara.Click += new System.EventHandler(this.btn_peserta_acara_Click);
+            this.management_account.Controls.Add(this.btn_member);
+            this.management_account.Controls.Add(this.btn_instructor);
+            this.management_account.Controls.Add(this.btn_admin);
+            this.management_account.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.management_account.Location = new System.Drawing.Point(12, 150);
+            this.management_account.Name = "management_account";
+            this.management_account.Size = new System.Drawing.Size(243, 193);
+            this.management_account.TabIndex = 8;
+            this.management_account.TabStop = false;
+            this.management_account.Text = "Manajemen Akun";
+            // 
+            // management_event
+            // 
+            this.management_event.Controls.Add(this.btn_event);
+            this.management_event.Controls.Add(this.btn_peserta_acara);
+            this.management_event.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.management_event.Location = new System.Drawing.Point(12, 360);
+            this.management_event.Name = "management_event";
+            this.management_event.Size = new System.Drawing.Size(243, 148);
+            this.management_event.TabIndex = 9;
+            this.management_event.TabStop = false;
+            this.management_event.Text = "Manajemen Acara";
+            // 
+            // attendance_recording
+            // 
+            this.attendance_recording.Controls.Add(this.btn_hadir);
+            this.attendance_recording.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attendance_recording.Location = new System.Drawing.Point(12, 530);
+            this.attendance_recording.Name = "attendance_recording";
+            this.attendance_recording.Size = new System.Drawing.Size(243, 84);
+            this.attendance_recording.TabIndex = 10;
+            this.attendance_recording.TabStop = false;
+            this.attendance_recording.Text = "Rekap Kehadiran";
             // 
             // admin_page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1187, 722);
             this.Controls.Add(this.panelKonten);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelSidebar);
@@ -205,6 +244,9 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelSidebar.ResumeLayout(false);
             this.panelHeader.ResumeLayout(false);
+            this.management_account.ResumeLayout(false);
+            this.management_event.ResumeLayout(false);
+            this.attendance_recording.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -224,5 +266,8 @@
         private System.Windows.Forms.Label welcomeTxt;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btn_peserta_acara;
+        private System.Windows.Forms.GroupBox management_account;
+        private System.Windows.Forms.GroupBox attendance_recording;
+        private System.Windows.Forms.GroupBox management_event;
     }
 }

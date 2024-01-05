@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,9 +14,13 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 {
     public partial class login_page : Form
     {
+        
         public login_page()
         {
             InitializeComponent();
+            textBoxPassword.UseSystemPasswordChar = true;
+            this.checkBoxTampilPass.CheckedChanged += new System.EventHandler(this.checkBoxTampilPass_CheckedChanged);
+
         }
 
         private void btn_login_Click(object sender, EventArgs e)
@@ -24,15 +29,14 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             string connection = "server=localhost; user id=root; password=; database=attendance";
             // membuat query SELECT
             string query = "SELECT * FROM user WHERE username=@username AND password=@password AND role=@role";
-
             // membuat koneksi dengan MySql
             using (MySqlConnection conn = new MySqlConnection(connection))
             {
-                // membuka koneksi
-                conn.Open();
-                using (MySqlCommand command = new MySqlCommand(query, conn))
+                try
                 {
-                    try
+                    // membuka koneksi
+                    conn.Open();
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
                         // gunakan paramter
                         command.Parameters.AddWithValue("@username", this.textBoxUsername.Text);
@@ -69,7 +73,8 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
                                     member_Page.Show();
                                     break;
                             }
-                        } else
+                        }
+                        else
                         {
                             string pesan = "Gagal Login. Username dan Password tidak tersedia";
                             string judul = "Gagal Login";
@@ -77,14 +82,15 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
                             MessageBox.Show(pesan, judul, buttons, MessageBoxIcon.Warning);
                         }
                     }
-                    catch (Exception)
-                    {
-                        
-                    }
-                    finally
-                    {
-                        conn.Close();
-                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal tersambung dengan Database. Periksa kembali jika ada kesalahan", "Gagal Koneksi Database", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                finally
+                {
+
                 }
             }
         }
@@ -93,5 +99,12 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
         {
             Application.Exit();
         }
+
+        private void checkBoxTampilPass_CheckedChanged(object sender, EventArgs e)
+        {
+            // Aktifkan atau nonaktifkan karakter bintang pada TextBoxPassword
+            textBoxPassword.UseSystemPasswordChar = !checkBoxTampilPass.Checked;
+        }
+
     }
 }

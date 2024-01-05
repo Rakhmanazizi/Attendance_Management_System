@@ -31,9 +31,11 @@
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.homeTitle = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.txtWelcomeUser = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panelKonten = new System.Windows.Forms.Panel();
-            this.txtWelcomeUser = new System.Windows.Forms.Label();
+            this.btn_beranda = new System.Windows.Forms.Button();
+            this.btn_history = new System.Windows.Forms.Button();
             this.panelSidebar.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.SuspendLayout();
@@ -41,6 +43,8 @@
             // panelSidebar
             // 
             this.panelSidebar.BackColor = System.Drawing.Color.PapayaWhip;
+            this.panelSidebar.Controls.Add(this.btn_history);
+            this.panelSidebar.Controls.Add(this.btn_beranda);
             this.panelSidebar.Controls.Add(this.homeTitle);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
@@ -71,6 +75,15 @@
             this.panelHeader.Size = new System.Drawing.Size(529, 91);
             this.panelHeader.TabIndex = 2;
             // 
+            // txtWelcomeUser
+            // 
+            this.txtWelcomeUser.AutoSize = true;
+            this.txtWelcomeUser.Location = new System.Drawing.Point(37, 39);
+            this.txtWelcomeUser.Name = "txtWelcomeUser";
+            this.txtWelcomeUser.Size = new System.Drawing.Size(44, 16);
+            this.txtWelcomeUser.TabIndex = 2;
+            this.txtWelcomeUser.Text = "label1";
+            // 
             // btnLogout
             // 
             this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -90,14 +103,25 @@
             this.panelKonten.Size = new System.Drawing.Size(529, 359);
             this.panelKonten.TabIndex = 3;
             // 
-            // txtWelcomeUser
+            // btn_beranda
             // 
-            this.txtWelcomeUser.AutoSize = true;
-            this.txtWelcomeUser.Location = new System.Drawing.Point(37, 39);
-            this.txtWelcomeUser.Name = "txtWelcomeUser";
-            this.txtWelcomeUser.Size = new System.Drawing.Size(44, 16);
-            this.txtWelcomeUser.TabIndex = 2;
-            this.txtWelcomeUser.Text = "label1";
+            this.btn_beranda.Location = new System.Drawing.Point(32, 128);
+            this.btn_beranda.Name = "btn_beranda";
+            this.btn_beranda.Size = new System.Drawing.Size(207, 55);
+            this.btn_beranda.TabIndex = 8;
+            this.btn_beranda.Text = "Beranda";
+            this.btn_beranda.UseVisualStyleBackColor = true;
+            this.btn_beranda.Click += new System.EventHandler(this.btn_beranda_Click);
+            // 
+            // btn_history
+            // 
+            this.btn_history.Location = new System.Drawing.Point(32, 189);
+            this.btn_history.Name = "btn_history";
+            this.btn_history.Size = new System.Drawing.Size(207, 55);
+            this.btn_history.TabIndex = 9;
+            this.btn_history.Text = "Riwayat Acara";
+            this.btn_history.UseVisualStyleBackColor = true;
+            this.btn_history.Click += new System.EventHandler(this.btn_history_Click);
             // 
             // member_page
             // 
@@ -126,5 +150,7 @@
         private System.Windows.Forms.Label homeTitle;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Label txtWelcomeUser;
+        private System.Windows.Forms.Button btn_history;
+        private System.Windows.Forms.Button btn_beranda;
     }
 }

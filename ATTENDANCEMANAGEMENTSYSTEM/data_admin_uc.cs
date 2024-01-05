@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -62,12 +63,16 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             return dataTable;
         }
 
-
         private void btn_clear_Click(object sender, EventArgs e)
         {
             textBoxNamaLengkap.Text = string.Empty;
             textBoxUsername.Text = string.Empty;
             textBoxPassword.Text = string.Empty;
+
+            textBoxPassEdit.Text = string.Empty;
+            textBoxNamaEdit.Text = string.Empty;
+            textBoxIdEdit.Text = string.Empty;
+            textBoxUserEdit.Text = string.Empty;
         }
 
         private void btn_tambah_Click(object sender, EventArgs e)
@@ -75,67 +80,68 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             string connection = "server=localhost; user id=root; password=; database=attendance";
             string query = "INSERT INTO user (nama_lengkap, username, password, role) VALUES(@full_name, @username, @password, \"admin\")";
 
-            using (MySqlConnection conn = new MySqlConnection(connection))
+            if (this.textBoxNamaLengkap.Text == "" || this.textBoxUsername.Text == "" || this.textBoxPassword.Text == "")
             {
-                conn.Open();
-                using (MySqlCommand command = new MySqlCommand(query, conn))
+                MessageBox.Show("Silakan isi kolom terlebih dahulu!", "Gagal tambah data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } else
+            {
+                using (MySqlConnection conn = new MySqlConnection(connection))
                 {
-                    try
+                    conn.Open();
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        command.Parameters.AddWithValue("@full_name", this.textBoxNamaLengkap.Text);
-                        command.Parameters.AddWithValue("@username", this.textBoxUsername.Text);
-                        command.Parameters.AddWithValue("@password", this.textBoxPassword.Text);
+                        try
+                        {
+                            command.Parameters.AddWithValue("@full_name", this.textBoxNamaLengkap.Text);
+                            command.Parameters.AddWithValue("@username", this.textBoxUsername.Text);
+                            command.Parameters.AddWithValue("@password", this.textBoxPassword.Text);
 
-                        int rowAffected = command.ExecuteNonQuery();
-                        if (rowAffected > 0)
-                        {
-                            string pesan = "Berhasil menambahkan data member";
-                            string judul = "Sukses Tambah Member";
-                            MessageBoxButtons buttons = MessageBoxButtons.OK;
-                            MessageBox.Show(pesan, judul, buttons, MessageBoxIcon.Information);
-                            btn_load_Click(sender, e);
-                        }
-                    }
-                    catch (MySqlException ex)
-                    {
-                        if (ex.Number == 1062)
-                        {
-                            // Menggunakan ekspresi reguler untuk mengekstrak informasi dari pesan kesalahan
-                            var match = Regex.Match(ex.Message, @"Duplicate entry '(.*?)' for key '(.*?)'");
-                            if (match.Success)
+                            int rowAffected = command.ExecuteNonQuery();
+                            if (rowAffected > 0)
                             {
-                                string duplicateEntry = match.Groups[1].Value;
-                                string keyName = match.Groups[2].Value;
-                                string psn = "";
-                                if (keyName == "password_unique")
-                                {
-                                    psn = "password";
-                                }
-                                else
-                                {
-                                    psn = "username";
-                                }
-
-                                string pesan = $"{psn} {duplicateEntry} sudah dipakai. Silakan isi dengan yang lain";
-                                string judul = "Error Duplikat";
+                                string pesan = "Berhasil menambahkan data member";
+                                string judul = "Sukses Tambah Member";
                                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                                MessageBox.Show(pesan, judul, buttons, MessageBoxIcon.Error);
+                                MessageBox.Show(pesan, judul, buttons, MessageBoxIcon.Information);
+                                btn_load_Click(sender, e);
+                            }
+                        }
+                        catch (MySqlException ex)
+                        {
+                            if (ex.Number == 1062)
+                            {
+                                // Menggunakan ekspresi reguler untuk mengekstrak informasi dari pesan kesalahan
+                                var match = Regex.Match(ex.Message, @"Duplicate entry '(.*?)' for key '(.*?)'");
+                                if (match.Success)
+                                {
+                                    string duplicateEntry = match.Groups[1].Value;
+                                    string keyName = match.Groups[2].Value;
+                                    string psn = "";
+                                    if (keyName == "password_unique")
+                                    {
+                                        psn = "password";
+                                    }
+                                    else
+                                    {
+                                        psn = "username";
+                                    }
+
+                                    string pesan = $"{psn} {duplicateEntry} sudah dipakai. Silakan isi dengan yang lain";
+                                    string judul = "Error Duplikat";
+                                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                                    MessageBox.Show(pesan, judul, buttons, MessageBoxIcon.Error);
+                                }
                             }
                         }
                     }
+                    conn.Close();
                 }
-                conn.Close();
-            }
+            }           
         }
 
         private void btn_load_Click(object sender, EventArgs e)
         {
             dgvDataAdmin.DataSource = fill_data();
-        }
-
-        private void txtBxId_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_clear_edit_Click(object sender, EventArgs e)
@@ -144,16 +150,6 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             textBoxNamaEdit.Text = string.Empty;
             textBoxPassEdit.Text = string.Empty;
             textBoxUserEdit.Text = string.Empty;
-        }
-
-        private void textBoxPassEdit_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Edit_Click(object sender, EventArgs e)
@@ -179,36 +175,6 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             btn_load_Click(sender, e);
         }
 
-        private void textBoxUserEdit_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxNamaEdit_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxIdEdit_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgvDataAdmin_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Periksa apakah sel yang diklik adalah sel dari kolom tombol
@@ -216,11 +182,6 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             {
                 // Ambil data dari baris yang diklik
                 int id = e.RowIndex;
-                /*string nama = dgvDataMember.Rows[id].Cells["NamaColumn"].Value.ToString();
-                string username = dgvDataMember.Rows[id].Cells["UsernameColumn"].Value.ToString();
-                string password = dgvDataMember.Rows[id].Cells["PasswordColumn"].Value.ToString();
-                */
-                // int id = Convert.ToInt32(dgvDataMember.CurrentCell.RowIndex.ToString());
                 string id_user = dgvDataAdmin.Rows[id].Cells[2].Value.ToString();
                 string username = dgvDataAdmin.Rows[id].Cells[3].Value.ToString();
                 string nama_lengkap = dgvDataAdmin.Rows[id].Cells[4].Value.ToString();

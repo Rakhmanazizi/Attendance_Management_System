@@ -126,18 +126,26 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             textBoxDeksripsi.Text = string.Empty;
             textBoxEvent.Text = string.Empty;
             textBoxTempat.Text = string.Empty;
+            textBoxDeskripsiEdit.Text = string.Empty;
+            textBoxEventEdit.Text = string.Empty;
+            textBoxTempatEdit.Text = string.Empty;
+            textBoxIdEditEvent.Text = string.Empty;
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
             string connection = "server=localhost; user id=root; password=; database=attendance";
-            string query = "UPDATE event SET nama_event=@nama_event, tempat=@tempat, deskripsi=@deskripsi WHERE id=@id";
+            string query = "UPDATE event SET nama_event=@nama_event, tempat=@tempat, tanggal=@tanggal, deskripsi=@deskripsi WHERE id=@id";
             MySqlConnection conn = new MySqlConnection(connection);
             conn.Open();
             MySqlCommand command = new MySqlCommand(query, conn);
+
+            DateTime tanggal = dtp_edit.Value;
+
             command.Parameters.AddWithValue("@id", this.textBoxIdEditEvent.Text);
             command.Parameters.AddWithValue("@nama_event", this.textBoxEventEdit.Text);
             command.Parameters.AddWithValue("@tempat", this.textBoxTempatEdit.Text);
+            command.Parameters.AddWithValue("@tanggal", tanggal.ToString("yyyy-MM-dd"));
             command.Parameters.AddWithValue("@deskripsi", this.textBoxDeskripsiEdit.Text);
 
             int rowAffected = command.ExecuteNonQuery();
@@ -202,6 +210,11 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
                     btn_load_Click(sender, e);
                 }
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
     
