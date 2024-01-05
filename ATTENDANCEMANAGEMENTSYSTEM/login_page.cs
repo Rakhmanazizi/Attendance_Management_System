@@ -26,7 +26,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
         private void btn_login_Click(object sender, EventArgs e)
         {
             // membuat variabel koneksi untuk megambil data MySql
-            string connection = "server=localhost; user id=root; password=; database=attendance";
+            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
             // membuat query SELECT
             string query = "SELECT * FROM user WHERE username=@username AND password=@password AND role=@role";
             // membuat koneksi dengan MySql

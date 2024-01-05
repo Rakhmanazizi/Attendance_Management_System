@@ -14,7 +14,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 {
     public partial class peserta_acara_uc : UserControl
     {
-        private string connectionDb = "server=localhost; user id=root; password=; database=attendance";
+        private string connectionDb = "server=localhost; user id=root; password=; database=db_attendance_ams";
         public peserta_acara_uc()
         {
             InitializeComponent();
@@ -205,7 +205,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             if (result == DialogResult.Yes)
             {
                 // Lakukan aksi penghapusan
-                string connection = "server=localhost; user id=root; password=; database=attendance";
+                string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
                 string query = "DELETE FROM kehadiran WHERE id=@id";
                 MySqlConnection conn = new MySqlConnection(connection);
                 conn.Open();

@@ -36,7 +36,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         public DataTable fill_data_member()
         {
-            string connection = "server=localhost; user id=root; password=; database=attendance";
+            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
             string query = "SELECT * FROM user WHERE role=\"instruktur\"";
 
             MySqlConnection conn = new MySqlConnection(connection);
@@ -64,7 +64,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         private void btn_tambah_Click(object sender, EventArgs e)
         {
-            string connection = "server=localhost; user id=root; password=; database=attendance";
+            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
             string query = "INSERT INTO user (nama_lengkap, username, password, role) VALUES(@nama_lengkap, @username, @password, \"instruktur\")";
 
             if (this.textBoxNamaLengkap.Text == "" || this.textBoxUsername.Text == "" || this.textBoxPassword.Text == "")
@@ -191,7 +191,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             if (result == DialogResult.Yes)
             {
                 // Lakukan aksi penghapusan
-                string connection = "server=localhost; user id=root; password=; database=attendance";
+                string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
                 string query = "DELETE FROM user WHERE id=@id";
                 MySqlConnection conn = new MySqlConnection(connection);
                 conn.Open();
@@ -214,7 +214,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
 
         private void Edit_Click(object sender, EventArgs e)
         {
-            string connection = "server=localhost; user id=root; password=; database=attendance";
+            string connection = "server=localhost; user id=root; password=; database=db_attendance_ams";
             string query = "UPDATE user SET nama_lengkap=@nama_lengkap, username=@username, password=@password WHERE id=@id";
 
             MySqlConnection conn = new MySqlConnection(connection);
