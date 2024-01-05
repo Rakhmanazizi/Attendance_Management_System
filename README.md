@@ -19,7 +19,7 @@ There are three users role in this application:
 You can download this repository with klik Code Button, and then download ZIP
 After that, you can followint these steps:
 - Activate your XAMPP and MySQL
-- Create new Database named attendance
+- Create new Database named db_attendance_ams
 - Import database file attendance.sql to attendance datatabse
 - Execute the program .exe
 
