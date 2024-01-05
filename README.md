@@ -30,12 +30,12 @@ For Admin:
 - role: admin
 
 For Operator:
-- username: operator
-- password: operator
+- username: instructor
+- password: instructor
 - role: instruktur
 
 For Participant
-- username:
-- password:
-- role:
+- username: member
+- password: member
+- role: member
 
