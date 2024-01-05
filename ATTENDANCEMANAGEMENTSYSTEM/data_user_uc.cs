@@ -193,12 +193,12 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             if (result == DialogResult.Yes)
             {
                 // Lakukan aksi penghapusan
-                string connection = "server=localhost; user id=root; password=; database=db_attendance_ams  ";
+                string connection = "server=localhost; user id=root; password=; database=attendance_bc";
                 string query = "DELETE FROM user WHERE id=@id";
                 MySqlConnection conn = new MySqlConnection(connection);
                 conn.Open();
                 MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@id", this.txtBxIdUs.Text);
+                command.Parameters.AddWithValue("id", this.txtBxIdUs.Text);
                 int rowAffected = command.ExecuteNonQuery();
                 if (rowAffected > 0)
                 {
@@ -206,7 +206,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
                     MessageBox.Show("Suskes hapus data", "Hapus Data", tombol, MessageBoxIcon.Information);
                 }
             }
-
+            btn_load_Click(sender, e);
             btn_load_Click(sender, e);
         }
 
@@ -222,11 +222,6 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             {
                 // Ambil data dari baris yang diklik
                 int id = e.RowIndex;
-                /*string nama = dgvDataMember.Rows[id].Cells["NamaColumn"].Value.ToString();
-                string username = dgvDataMember.Rows[id].Cells["UsernameColumn"].Value.ToString();
-                string password = dgvDataMember.Rows[id].Cells["PasswordColumn"].Value.ToString();
-                */
-                // int id = Convert.ToInt32(dgvDataMember.CurrentCell.RowIndex.ToString());
                 string id_user = dgvDataMember.Rows[id].Cells[2].Value.ToString();
                 string username  = dgvDataMember.Rows[id].Cells[3].Value.ToString();
                 string nama_lengkap   = dgvDataMember.Rows[id].Cells[4].Value.ToString();
