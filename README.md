@@ -9,7 +9,7 @@ This application using:
 - IDE: Visual Studio 2022
 - Database: MySQL
 
-## User Rola
+## User Role
 There are three users role in this application:
 - Administrator
 - Operator/Instructor
@@ -25,17 +25,17 @@ After that, you can followint these steps:
 
 ## How Login
 For Admin:
-username: admin
-pass: admin
-role: admin
+- username: admin
+- password: admin
+- role: admin
 
 For Operator:
-username: operator
-pass: operator
-role: instruktur
+- username: operator
+- password: operator
+- role: instruktur
 
 For Participant
-username:
-pass:
-role: member
+- username:
+- password:
+- role:
 
