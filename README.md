@@ -34,8 +34,8 @@ For Admin:
 - role user: admin
 
 For Operator:
-- username: instructor
-- password: instructor
+- username: instruktur
+- password: instruktur
 - role user: instruktur
 
 For Participant
