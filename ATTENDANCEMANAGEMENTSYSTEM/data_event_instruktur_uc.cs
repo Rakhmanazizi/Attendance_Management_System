@@ -20,7 +20,6 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
         {
             InitializeComponent();
             dgvEventInst.DataSource = fill_data();
-            
 
             DataGridViewButtonColumn col_edit = new DataGridViewButtonColumn();
             col_edit.UseColumnTextForButtonValue = true;
@@ -62,7 +61,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
         private DataTable fill_data()
         {
             string connection = "server=localhost; user id=root; password=; database=attendance_bc";
-            string query = $"SELECT * FROM event_view WHERE instruktur=@username";
+            string query = $"SELECT id, nama_event, tanggal, tempat, nama_lengkap AS \"Instruktur\", deskripsi FROM event_view WHERE instruktur=@username";
 
             int get_id = get_id_instruktur();
             MySqlConnection conn = new MySqlConnection(connection);
@@ -192,9 +191,10 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
             if (e.RowIndex >= 0 && (e.ColumnIndex == dgvEventInst.Columns["col_edit"].Index || e.ColumnIndex == dgvEventInst.Columns["col_delete"].Index))
             {
                 int id = e.RowIndex;
+
                 string id_event = dgvEventInst.Rows[id].Cells[2].Value.ToString();
                 string nama_event = dgvEventInst.Rows[id].Cells[3].Value.ToString();
-                string tanggal = dgvEventInst.Rows[id].Cells[4].Value.ToString();
+                _ = dgvEventInst.Rows[id].Cells[4].Value.ToString();
                 string tempat = dgvEventInst.Rows[id].Cells[5].Value.ToString();
                 string deskripsi = dgvEventInst.Rows[id].Cells[7].Value.ToString();
 

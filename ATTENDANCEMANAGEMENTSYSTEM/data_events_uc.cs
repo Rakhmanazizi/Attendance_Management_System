@@ -183,7 +183,7 @@ namespace ATTENDANCEMANAGEMENTSYSTEM
                 string nama_event = dgvEvents.Rows[id].Cells[3].Value.ToString();
                 string tanggal = dgvEvents.Rows[id].Cells[4].Value.ToString();
                 string tempat = dgvEvents.Rows[id].Cells[5].Value.ToString();
-                string deskripsi = dgvEvents.Rows[id].Cells[7].Value.ToString();
+                string deskripsi = dgvEvents.Rows[id].Cells[8].Value.ToString();
 
                 if (e.ColumnIndex == dgvEvents.Columns["col_edit"].Index)
                 {
